@@ -1,7 +1,16 @@
 package main
 
-import "github.com/coolzilj/renrenbk/cmd"
+import (
+	"fmt"
+	"os"
+
+	"github.com/coolzilj/renrenbk/cmd"
+)
 
 func main() {
-	cmd.Execute()
+	renrenbkCmd := cmd.NewRenrenbkCmd()
+	if err := renrenbkCmd.Execute(); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 }
